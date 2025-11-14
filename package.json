@@ -37,6 +37,7 @@
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.17.0",
     "mysql": "^2.18.1",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
