@@ -24,7 +24,7 @@ export class TaskUpdater {
 
     if (existingTask) {
       // 使用 findOneAndUpdate 更新 enable 字段
-      return await taskModel
+      const updatedTask = await taskModel
         .findOneAndUpdate(
           { id: taskId },
           {
@@ -36,6 +36,12 @@ export class TaskUpdater {
           { new: true } // 返回更新后的文档
         )
         .exec();
+      
+      if (!updatedTask) {
+        throw new Error(`任务 ${taskId} 更新失败`);
+      }
+      
+      return updatedTask;
     } else {
       // 如果任务不存在，创建一个禁用的任务（使用默认值）
       const newTask = new taskModel({
@@ -73,7 +79,7 @@ export class TaskUpdater {
 
     if (existingTask) {
       // 使用 findOneAndUpdate 更新现有任务
-      return await taskModel
+      const updatedTask = await taskModel
         .findOneAndUpdate(
           { id: taskId },
           {
@@ -91,6 +97,12 @@ export class TaskUpdater {
           { new: true } // 返回更新后的文档
         )
         .exec();
+      
+      if (!updatedTask) {
+        throw new Error(`任务 ${taskId} 更新失败`);
+      }
+      
+      return updatedTask;
     } else {
       // 创建新任务
       const newTask = new taskModel({
