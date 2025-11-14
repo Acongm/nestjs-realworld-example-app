@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduledTaskService } from './scheduled-task.service';
 import { ScheduledTaskController } from './scheduled-task.controller';
+import { ScheduledTask, ScheduledTaskSchema } from './schemas/scheduled-task.schema';
 
 /**
  * 定时任务模块
@@ -8,8 +10,13 @@ import { ScheduledTaskController } from './scheduled-task.controller';
  * @class ScheduledTaskModule
  */
 @Module({
-  imports: [],
+  imports: [
+    MongooseModule.forFeature([
+      { name: ScheduledTask.name, schema: ScheduledTaskSchema }
+    ])
+  ],
   providers: [ScheduledTaskService],
   controllers: [ScheduledTaskController],
+  exports: [ScheduledTaskService],
 })
 export class ScheduledTaskModule {}

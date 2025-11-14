@@ -32,9 +32,11 @@ export class ScheduledTaskController {
 
   /**
    * 创建或更新定时任务
-   * 根据任务ID判断是创建还是更新，如果ID已存在则更新，不存在则创建
+   * 使用固定的系统任务ID（security-operations-report-system）
+   * enable: false 时，只需要传 enable 字段，其他字段可选
+   * enable: true 时，frequency、time、recipient、pageIds、branchIds 都是必填字段
    * @route PUT /scheduled-tasks
-   * @param {CreateScheduledTaskDto} taskData - 定时任务数据
+   * @param {CreateScheduledTaskDto} taskData - 定时任务数据（不需要传入 id）
    * @returns {Promise<ScheduledTask>} 返回创建或更新后的任务对象
    */
   @Put()

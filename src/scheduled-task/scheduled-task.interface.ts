@@ -1,4 +1,5 @@
 import { WeekEnum } from './enums/week.enum';
+import { FrequencyEnum } from './enums/frequency.enum';
 
 /**
  * 定时任务接口定义
@@ -11,8 +12,8 @@ export interface ScheduledTask {
   /** 是否启用 */
   enable: boolean;
 
-  /** 执行频率（如：weekly, daily 等） */
-  frequency: string;
+  /** 执行频率枚举 */
+  frequency: FrequencyEnum;
 
   /** 执行时间配置 */
   time: {
