@@ -16,8 +16,24 @@ services:
     networks:
       - nestjs-network
 
+  mysql:
+    image: mysql:8.0
+    container_name: nestjs-mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_DATABASE: nestjsrealworld
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - nestjs-network
+    command: --default-authentication-plugin=mysql_native_password
+
 volumes:
   mongodb_data:
+  mysql_data:
 
 networks:
   nestjs-network:

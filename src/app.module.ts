@@ -11,8 +11,9 @@ import { ScheduledTaskModule } from './scheduled-task/scheduled-task.module';
 
 @Module({
   imports: [
+    // TypeORM 配置（用于 Article、User、Tag、Profile 等模块，连接 MySQL）
     TypeOrmModule.forRoot(),
-    // MongoDB 连接配置
+    // MongoDB 连接配置（用于 scheduled-task 模块）
     MongooseModule.forRoot('mongodb://admin:password123@localhost:27017/nestjsrealworld?authSource=admin'),
     ArticleModule,
     UserModule,

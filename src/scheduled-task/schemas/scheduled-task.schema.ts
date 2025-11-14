@@ -77,6 +77,6 @@ export class ScheduledTask {
 export const ScheduledTaskSchema = SchemaFactory.createForClass(ScheduledTask);
 
 // 添加索引
-ScheduledTaskSchema.index({ id: 1 }, { unique: true });
-ScheduledTaskSchema.index({ enable: 1 });
+ScheduledTaskSchema.index({ id: 1 }, { unique: true, sparse: false });
+ScheduledTaskSchema.index({ enable: 1 }, { sparse: false });
 
