@@ -36,4 +36,5 @@ export class UserEntity {
 
   @OneToMany(type => ArticleEntity, article => article.author)
   articles: ArticleEntity[];
+  
 }
